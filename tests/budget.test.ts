@@ -173,6 +173,15 @@ describe('réinitialisations et ruptures', () => {
     expect(st.budget!.today.baselinePct).toBe(0);
   });
 
+  it('reset anticipé sans changement d’heure : la trajectoire repart de la rupture', () => {
+    const snaps = [snap(z(2026, 11, 9, 0), 0, R), snap(z(2026, 11, 11, 9), 87, R), snap(z(2026, 11, 13, 14), 13, R), snap(z(2026, 11, 13, 18), 16, R)];
+    const st = at(snaps, z(2026, 11, 13, 18, 1));
+    expect(st.budget!.trajectoryFrom).toEqual({ t: z(2026, 11, 13, 14), v: 13 });
+    expect(st.budget!.plannedNow).toBeGreaterThan(13);
+    expect(st.budget!.plannedNow).toBeLessThan(20); // et non ~ 64 % comme depuis le début de semaine
+    expect(st.budget!.today.baselinePct).toBe(13);
+  });
+
   it("changement d'abonnement : rupture, calcul repris depuis le changement", () => {
     const snaps = [
       snap(z(2026, 11, 10, 0), 50, R, { plan: 'pro' }),

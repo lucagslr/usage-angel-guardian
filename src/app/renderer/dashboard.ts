@@ -114,7 +114,7 @@ function trajectoryChart(): SVGElement {
   const st = report!.state;
   const b = st.budget!;
   const actual = report!.trajectory.map((p) => ({ t: p.t, v: p.pct }));
-  const planned = [{ t: b.windowStart, v: 0 }, { t: b.resetsAt, v: 100 - b.reservePct }];
+  const planned = [{ t: b.trajectoryFrom.t, v: b.trajectoryFrom.v }, { t: b.resetsAt, v: Math.max(b.trajectoryFrom.v, 100 - b.reservePct) }];
   const proj = st.forecast?.blendedRate && actual.length
     ? [{ t: st.now, v: b.weeklyUsed }, { t: b.resetsAt, v: Math.min(120, b.weeklyUsed + st.forecast.blendedRate * ((b.resetsAt - st.now) / 3_600_000)) }]
     : [];

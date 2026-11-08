@@ -2,7 +2,7 @@
 
 **Transformez votre quota hebdomadaire Claude en budget quotidien intelligent, affiché directement dans Claude Desktop (Windows).**
 
-![Windows 10/11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6) ![Claude Desktop](https://img.shields.io/badge/Claude%20Desktop-MSIX%20%26%20classique-c96442) ![Tests](https://img.shields.io/badge/tests-68%20%2B%202-2e8b57) ![Licence MIT](https://img.shields.io/badge/licence-MIT-lightgrey) ![100 % local](https://img.shields.io/badge/donn%C3%A9es-100%20%25%20locales-5e5d59)
+![Windows 10/11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6) ![Claude Desktop](https://img.shields.io/badge/Claude%20Desktop-MSIX%20%26%20classique-c96442) ![Tests](https://img.shields.io/badge/tests-69%20%2B%202-2e8b57) ![Licence MIT](https://img.shields.io/badge/licence-MIT-lightgrey) ![100 % local](https://img.shields.io/badge/donn%C3%A9es-100%20%25%20locales-5e5d59)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bar-dark.png">
@@ -210,7 +210,7 @@ Liste complète : [docs/LIMITATIONS.md](docs/LIMITATIONS.md) · Problème ? [doc
 
 ```bash
 npm install
-npm run check          # typecheck + 68 tests + build
+npm run check          # typecheck + 69 tests + build
 npm start              # overlay en développement
 npm run demo -- C:\tmp\demo-data   # données simulées, puis CUG_DATA_DIR=C:\tmp\demo-data npm start
 npm run dist           # installateur NSIS + exécutable portable

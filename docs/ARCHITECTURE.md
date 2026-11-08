@@ -61,4 +61,4 @@ Voir [DECISION.md](DECISION.md). En bref : Electron + koffi pour partager un uni
 
 ## Tests
 
-`npm test` lance 68 tests vitest (moteur, sources, placement, visibilité, stockage, tokens). `claude plugin test mod/usage-guardian` lance 2 tests du mod avec le kit officiel, sur les surfaces desktop et terminal. Les données sont simulées : aucun quota n'est consommé. L'autotest sur le bureau réel est disponible via `CUG_SELFTEST=<dossier>`.
+`npm test` lance 69 tests vitest (moteur, sources, placement, visibilité, stockage, tokens). `claude plugin test mod/usage-guardian` lance 2 tests du mod avec le kit officiel, sur les surfaces desktop et terminal. Les données sont simulées : aucun quota n'est consommé. L'autotest sur le bureau réel est disponible via `CUG_SELFTEST=<dossier>`.

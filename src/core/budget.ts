@@ -66,6 +66,8 @@ export interface WeekPlan {
   days: BudgetDay[];
   /** Trajectoire recommandée cumulée à l'instant (% hebdo). */
   plannedNow: number;
+  /** Point de départ de la trajectoire : début de semaine (0 %) ou dernière rupture (reset anticipé…). */
+  trajectoryFrom: { t: number; v: number };
   /** weeklyUsed − plannedNow : positif = consommation en avance sur la trajectoire. */
   deviation: number;
   /** Budget moyen par jour futur, en tenant compte de la consommation actuelle. */
@@ -164,10 +166,14 @@ export function computeWeekPlan(epoch: Epoch, priorEpochs: Epoch[], settings: Se
   }
 
   // --- Trajectoire recommandée (sans report) -------------------------------
-  const totalW = segs.reduce((a, g) => a + weightOf(settings, g, g.start, g.end), 0);
-  const elapsedW = segs.slice(0, idx).reduce((a, g) => a + weightOf(settings, g, g.start, g.end), 0)
-    + weightOf(settings, todaySeg, todaySeg.start, now);
-  const plannedNow = totalW > 0 ? ((100 - reserve) * elapsedW) / totalW : 0;
+  // Après une réinitialisation anticipée ou un changement d'abonnement, la trajectoire repart
+  // de la rupture (valeur connue) au lieu du début de la semaine officielle.
+  const tFrom = Math.max(windowStart, epoch.start);
+  const vFrom = epoch.start > windowStart ? epoch.startValue : 0;
+  const wBetween = (a: number, b2: number) => segs.reduce((acc, g) => acc + weightOf(settings, g, Math.max(g.start, a), Math.min(g.end, b2)), 0);
+  const totalW = wBetween(tFrom, epoch.resetsAt);
+  const elapsedW = wBetween(tFrom, now);
+  const plannedNow = totalW > 0 ? vFrom + ((Math.max(0, 100 - reserve - vFrom)) * elapsedW) / totalW : vFrom;
 
   const futureDays = future.reduce((a, g) => a + (g.end - g.start) / DAY, 0);
   const previews: StrategyPreview[] = (['balanced', 'conservative', 'intensive'] as Strategy[]).map((st) => {
@@ -187,6 +193,7 @@ export function computeWeekPlan(epoch: Epoch, priorEpochs: Epoch[], settings: Se
     today,
     days,
     plannedNow,
+    trajectoryFrom: { t: tFrom, v: vFrom },
     deviation: weeklyUsed - plannedNow,
     futurePerDay: future.length ? futurePool / future.length : 0,
     futureDays,

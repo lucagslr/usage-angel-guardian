@@ -8,7 +8,7 @@ import path from 'node:path';
 import { notificationsToSend, type NotificationRequest } from '../../core/alerts';
 import { estimateSession, type SessionEstimate } from '../../core/forecast';
 import { fmtDateTime } from '../../core/format';
-import { mergeSnapshots } from '../../core/schedule';
+import { inferWeeklyResets, mergeSnapshots } from '../../core/schedule';
 
 import { computeState, derive, type GuardianState } from '../../core/state';
 import { compareDays, dailyHistory, hourlyProfile, sessionsPerDay, weeklyCycles, type Comparison, type DailyUsage, type WeeklyCycle } from '../../core/stats';
@@ -193,7 +193,8 @@ export class DataService extends EventEmitter {
   }
 
   sources(): SourceStatus[] {
-    const all = this.allSnapshots();
+    // Mêmes heures de reset déduites que le moteur (sinon le journal Desktop serait ignoré).
+    const all = inferWeeklyResets(this.allSnapshots(), this.settings.manualWeeklyReset);
     const ids: SourceId[] = ['desktop-mod', 'desktop-history', 'claude-code', 'manual'];
     return ids.map((id) => {
       const list = all.filter((s) => s.source === id);
@@ -215,7 +216,8 @@ export class DataService extends EventEmitter {
 
   report(): Report {
     const s = this.state;
-    const all = this.allSnapshots();
+    // Mêmes heures de reset déduites que le moteur (sinon le journal Desktop serait ignoré).
+    const all = inferWeeklyResets(this.allSnapshots(), this.settings.manualWeeklyReset);
     const d = derive(all, s.now);
     const from = s.now - 28 * DAY;
     const daily = dailyHistory(d.weeklyEpochs, this.settings, s.now - 35 * DAY, s.now);

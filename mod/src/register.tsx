@@ -40,6 +40,7 @@ function day(t: number): string {
 
 type $T = EngineInterface
 const NL = String.fromCharCode(10)
+const HEARTBEAT_MS = 10 * 60_000
 
 const ctx: Ctx = { dir: null, history: null, writer: `mod-${Math.random().toString(36).slice(2, 10)}` }
 let settings: Settings = { ...DEFAULT_SETTINGS }
@@ -90,7 +91,8 @@ async function record($: $T, rateLimits: unknown): Promise<boolean> {
   const now = await $.clock.now()
   const s = parseModRateLimits(rateLimits, now)
   if (!s || !ctx.dir) return false
-  if (!isWorthStoring(ctx.last, s)) return false
+  // Mesure enregistrée si le % change, ou en confirmation toutes les 10 min au plus (fraîcheur exacte).
+  if (!isWorthStoring(ctx.last, s, HEARTBEAT_MS)) return false
   const file = `${ctx.dir}/snapshots/${day(now)}-${ctx.writer}.jsonl`
   let prev = ''
   try { prev = String(await $.fs.read(file)) } catch { /* nouveau fichier */ }
@@ -112,7 +114,8 @@ export const register: Register = on => {
   })
 
   on('session.measure', async ($, e, next) => {
-    if (e.changed.includes('rateLimits') && e.rateLimits.length) {
+    // Déclenché après chaque réponse (le coût ou le contexte change toujours) : on confirme la mesure.
+    if (e.rateLimits.length) {
       if (await record($, e.rateLimits)) {
         const v = await refresh($)
         const t = v.budget?.today
