@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="Segoe UI, system-ui, sans-serif">
+  <title>Architecture : des quotas officiels à la barre</title>
+  <defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8f8d86"/></marker></defs>
+  <rect width="900" height="430" rx="16" fill="#faf9f5"/>
+  <text x="30" y="40" font-size="15" font-weight="700" fill="#1f1e1d">Sources</text>
+  <text x="330" y="40" font-size="15" font-weight="700" fill="#1f1e1d">Local et partagé</text>
+  <text x="650" y="40" font-size="15" font-weight="700" fill="#1f1e1d">Affichage</text>
+  <g font-size="12.5">
+    <rect x="30" y="60" width="240" height="56" rx="10" fill="#e8f3ec" stroke="#2e8b57"/>
+    <text x="44" y="83" font-weight="700" fill="#1f1e1d">Mod onglet Code</text>
+    <text x="44" y="102" fill="#3d5c49">officiel · % + heure de reset</text>
+    <rect x="30" y="128" width="240" height="56" rx="10" fill="#e8f3ec" stroke="#2e8b57"/>
+    <text x="44" y="151" font-weight="700" fill="#1f1e1d">Journal de Claude Desktop</text>
+    <text x="44" y="170" fill="#3d5c49">officiel · lecture seule · sans reset</text>
+    <rect x="30" y="196" width="240" height="56" rx="10" fill="#e8f3ec" stroke="#2e8b57"/>
+    <text x="44" y="219" font-weight="700" fill="#1f1e1d">Statusline Claude Code CLI</text>
+    <text x="44" y="238" fill="#3d5c49">officiel · optionnelle</text>
+    <rect x="30" y="264" width="240" height="56" rx="10" fill="#f0eee6" stroke="#8f8d86"/>
+    <text x="44" y="287" font-weight="700" fill="#1f1e1d">Saisie manuelle</text>
+    <text x="44" y="306" fill="#5e5d59">repli toujours disponible</text>
+    <rect x="30" y="332" width="240" height="56" rx="10" fill="#f0eee6" stroke="#8f8d86"/>
+    <text x="44" y="355" font-weight="700" fill="#1f1e1d">Journaux Claude Code</text>
+    <text x="44" y="374" fill="#5e5d59">tokens exacts (usage seulement)</text>
+
+    <rect x="330" y="80" width="250" height="70" rx="10" fill="#ffffff" stroke="#cfcabd"/>
+    <text x="344" y="106" font-weight="700" fill="#1f1e1d">~/.claude-usage-guardian/</text>
+    <text x="344" y="126" fill="#5e5d59">mesures horodatées (JSONL),</text>
+    <text x="344" y="142" fill="#5e5d59">paramètres, anti-spam</text>
+    <rect x="330" y="180" width="250" height="150" rx="10" fill="#fbeee8" stroke="#c96442"/>
+    <text x="344" y="206" font-weight="700" fill="#1f1e1d">Moteur (src/core, testé)</text>
+    <text x="344" y="228" fill="#5e5d59">époques : resets, ruptures</text>
+    <text x="344" y="248" fill="#5e5d59">budget quotidien adaptatif</text>
+    <text x="344" y="268" fill="#5e5d59">vitesse, prévisions, confiance</text>
+    <text x="344" y="288" fill="#5e5d59">statuts, conseiller, alertes</text>
+    <text x="344" y="314" font-weight="700" fill="#c96442">→ GuardianState</text>
+
+    <rect x="650" y="60" width="220" height="56" rx="10" fill="#2a2927"/>
+    <text x="664" y="83" font-weight="700" fill="#f5f4ef">Barre overlay Windows</text>
+    <text x="664" y="102" fill="#c3c0b6">onglet Chat et partout</text>
+    <rect x="650" y="128" width="220" height="56" rx="10" fill="#2a2927"/>
+    <text x="664" y="151" font-weight="700" fill="#f5f4ef">Bande native (mod)</text>
+    <text x="664" y="170" fill="#c3c0b6">onglet Code</text>
+    <rect x="650" y="196" width="220" height="56" rx="10" fill="#ffffff" stroke="#cfcabd"/>
+    <text x="664" y="219" font-weight="700" fill="#1f1e1d">Dashboard</text>
+    <text x="664" y="238" fill="#5e5d59">historique, prévisions, réglages</text>
+    <rect x="650" y="264" width="220" height="56" rx="10" fill="#ffffff" stroke="#cfcabd"/>
+    <text x="664" y="287" font-weight="700" fill="#1f1e1d">Tray + notifications</text>
+    <text x="664" y="306" fill="#5e5d59">Windows, anti-spam</text>
+    <rect x="650" y="332" width="220" height="56" rx="10" fill="#ffffff" stroke="#cfcabd"/>
+    <text x="664" y="355" font-weight="700" fill="#1f1e1d">Statusline terminal</text>
+    <text x="664" y="374" fill="#5e5d59">optionnelle</text>
+  </g>
+  <g stroke="#8f8d86" stroke-width="1.5" fill="none" marker-end="url(#m)">
+    <path d="M270 88 L328 108"/><path d="M270 156 L328 120"/><path d="M270 224 L328 132"/><path d="M270 292 L328 140"/>
+    <path d="M270 360 C300 360 300 330 328 318"/>
+    <path d="M455 150 L455 178"/>
+    <path d="M580 300 L648 88"/><path d="M580 302 L648 156"/><path d="M580 304 L648 224"/><path d="M580 306 L648 292"/><path d="M580 308 L648 360"/>
+  </g>
+  <text x="30" y="414" font-size="12" fill="#8f8d86">Aucune requête réseau · aucun cookie ni jeton lu · Claude Desktop jamais modifié</text>
+</svg>

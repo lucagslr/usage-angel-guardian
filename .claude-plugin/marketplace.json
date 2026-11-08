@@ -1,0 +1,11 @@
+{
+  "name": "claude-desktop-usage-guardian",
+  "owner": { "name": "Luca" },
+  "plugins": [
+    {
+      "name": "usage-guardian",
+      "source": "./mod/usage-guardian",
+      "description": "Barre de budget quotidien Claude au-dessus de la zone de saisie (onglet Code de Claude Desktop)."
+    }
+  ]
+}

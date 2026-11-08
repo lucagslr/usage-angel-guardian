@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+Thumbs.db
+# Données personnelles : ne jamais versionner
+*.local.json
+cug-export-*.json
+history.jsonl
+snapshots/
+release/
+.env
+.claude-plugin/types/

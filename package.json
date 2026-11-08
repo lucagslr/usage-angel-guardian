@@ -1,0 +1,122 @@
+{
+  "name": "claude-desktop-usage-guardian",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Compagnon Windows de Claude Desktop : budget quotidien intelligent du quota hebdomadaire, overlay attaché à la fenêtre Claude et mod officiel pour l'onglet Code.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "start": "npm run build && electron .",
+    "check": "npm run typecheck && npm test && npm run build",
+    "dist": "npm run build && node scripts/make-icon.mjs && electron-builder --win",
+    "mod:link": "node scripts/mod-dev.mjs",
+    "statusline:install": "node scripts/install-statusline.mjs",
+    "statusline:uninstall": "node scripts/uninstall-statusline.mjs",
+    "demo": "node scripts/seed-demo.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0",
+    "esbuild": "^0.25.12",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  },
+  "productName": "Claude Desktop Usage Guardian",
+  "main": "dist/app/main.cjs",
+  "author": "Luca",
+  "dependencies": {
+    "koffi": "^3.3.7"
+  },
+  "build": {
+    "appId": "ch.luca.claude-desktop-usage-guardian",
+    "productName": "Claude Desktop Usage Guardian",
+    "copyright": "© 2026 Luca — MIT",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/app/**",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/koffi/**"
+    ],
+    "extraResources": [
+      {
+        "from": ".claude-plugin",
+        "to": "marketplace/.claude-plugin"
+      },
+      {
+        "from": "mod/usage-guardian",
+        "to": "marketplace/mod/usage-guardian",
+        "filter": [
+          "**/*",
+          "!tests/**"
+        ]
+      },
+      {
+        "from": "dist/statusline",
+        "to": "statusline"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "executableName": "ClaudeDesktopUsageGuardian"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": false,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Claude Desktop Usage Guardian",
+      "include": "build/installer.nsh",
+      "artifactName": "Claude-Desktop-Usage-Guardian-Setup-${version}.${ext}",
+      "deleteAppDataOnUninstall": true,
+      "runAfterFinish": true
+    },
+    "portable": {
+      "artifactName": "Claude-Desktop-Usage-Guardian-Portable-${version}.${ext}"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucagslr/usage-angel-guardian.git"
+  },
+  "homepage": "https://github.com/lucagslr/usage-angel-guardian#readme",
+  "bugs": {
+    "url": "https://github.com/lucagslr/usage-angel-guardian/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-desktop",
+    "usage",
+    "quota",
+    "windows",
+    "electron",
+    "overlay"
+  ]
+}

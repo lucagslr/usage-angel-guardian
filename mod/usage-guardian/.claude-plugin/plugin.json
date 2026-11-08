@@ -1,0 +1,6 @@
+{
+  "name": "usage-guardian",
+  "version": "0.1.0",
+  "description": "Budget quotidien du quota Claude, limites 5 h / hebdo officielles et prévisions, au-dessus de la zone de saisie.",
+  "types": "./types/index.d.ts"
+}

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" font-family="Segoe UI, system-ui, sans-serif">
+  <title>Placement de la barre dans la fenêtre Claude Desktop (schéma)</title>
+  <rect width="880" height="500" rx="16" fill="#faf9f5"/>
+  <!-- fenêtre -->
+  <rect x="40" y="40" width="600" height="420" rx="10" fill="#ffffff" stroke="#d8d4ca" stroke-width="1.5"/>
+  <rect x="40" y="40" width="600" height="34" rx="10" fill="#f0eee6"/>
+  <rect x="40" y="62" width="600" height="12" fill="#f0eee6"/>
+  <circle cx="602" cy="57" r="5" fill="#d8d4ca"/><circle cx="584" cy="57" r="5" fill="#d8d4ca"/><circle cx="566" cy="57" r="5" fill="#d8d4ca"/>
+  <text x="56" y="62" font-size="13" fill="#5e5d59">Fenêtre Claude Desktop (schéma)</text>
+  <!-- barre latérale -->
+  <rect x="40" y="74" width="130" height="386" fill="#f5f3ec"/>
+  <rect x="56" y="96" width="96" height="10" rx="5" fill="#e3dfd4"/>
+  <rect x="56" y="118" width="80" height="10" rx="5" fill="#e3dfd4"/>
+  <rect x="56" y="140" width="90" height="10" rx="5" fill="#e3dfd4"/>
+  <!-- conversation -->
+  <rect x="200" y="100" width="300" height="12" rx="6" fill="#ebe8df"/>
+  <rect x="200" y="122" width="380" height="12" rx="6" fill="#ebe8df"/>
+  <rect x="200" y="144" width="340" height="12" rx="6" fill="#ebe8df"/>
+  <rect x="300" y="180" width="280" height="36" rx="10" fill="#f0eee6"/>
+  <rect x="200" y="236" width="360" height="12" rx="6" fill="#ebe8df"/>
+  <rect x="200" y="258" width="250" height="12" rx="6" fill="#ebe8df"/>
+  <!-- barre Usage Guardian -->
+  <rect x="200" y="300" width="400" height="44" rx="10" fill="#2a2927" stroke="#c96442" stroke-width="2"/>
+  <circle cx="216" cy="314" r="5" fill="#2e9d5b"/>
+  <text x="228" y="318" font-size="11" font-weight="700" fill="#c3c0b6">AUJOURD'HUI</text>
+  <text x="314" y="318" font-size="11.5" font-weight="700" fill="#f5f4ef">5,2 % / 14,3 %</text>
+  <rect x="410" y="310" width="100" height="6" rx="3" fill="#47453f"/>
+  <rect x="410" y="310" width="36" height="6" rx="3" fill="#5cbf86"/>
+  <text x="518" y="318" font-size="11" font-weight="700" fill="#5cbf86">36 % VERT</text>
+  <text x="216" y="336" font-size="10" fill="#c3c0b6">5H : 42 % ↻ 2 h 14 | SEMAINE : 35 % | RESET : 2 j 8 h</text>
+  <!-- zone de saisie -->
+  <rect x="200" y="356" width="400" height="84" rx="14" fill="#ffffff" stroke="#cfcabd" stroke-width="1.5"/>
+  <text x="218" y="384" font-size="13" fill="#8f8d86">Zone de saisie de Claude</text>
+  <!-- annotations -->
+  <g font-size="13" fill="#1f1e1d">
+    <path d="M604 322 H660" stroke="#c96442" stroke-width="1.5" marker-end="url(#a)"/>
+    <text x="668" y="300" font-weight="700">Usage Guardian</text>
+    <text x="668" y="320">• au-dessus de la saisie</text>
+    <text x="668" y="338">• suit la fenêtre (DPI,</text>
+    <text x="680" y="354">multi-écran)</text>
+    <text x="668" y="372">• ne prend pas le clavier</text>
+    <text x="668" y="390">• masquée si Claude est</text>
+    <text x="680" y="406">inactif ou réduit</text>
+    <text x="668" y="424">• déplaçable (⋮⋮)</text>
+  </g>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c96442"/></marker></defs>
+</svg>

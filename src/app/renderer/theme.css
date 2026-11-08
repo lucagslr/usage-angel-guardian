@@ -1,0 +1,60 @@
+/* Jetons visuels communs — tons chauds proches de Claude Desktop. */
+:root {
+  --bg: #faf9f5;
+  --surface: #ffffff;
+  --surface-2: #f3f1ea;
+  --border: rgba(31, 30, 29, 0.12);
+  --text: #1f1e1d;
+  --text-2: #5e5d59;
+  --text-3: #8f8d86;
+  --accent: #c96442;
+  --green: #2e8b57;
+  --yellow: #b8860b;
+  --orange: #d2691e;
+  --red: #c7362f;
+  --critical: #9b1328;
+  --unknown: #8f8d86;
+  --track: rgba(31, 30, 29, 0.09);
+  --shadow: 0 6px 24px rgba(31, 30, 29, 0.16), 0 1px 3px rgba(31, 30, 29, 0.12);
+  --radius: 12px;
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1f1e1d; --surface: #2a2927; --surface-2: #33312e; --border: rgba(250, 249, 245, 0.12);
+    --text: #f5f4ef; --text-2: #c3c0b6; --text-3: #8f8d86; --accent: #d97757;
+    --green: #5cbf86; --yellow: #e2b93b; --orange: #ec8a45; --red: #ef6a5f; --critical: #ff4f6d;
+    --track: rgba(250, 249, 245, 0.1); --shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1f1e1d; --surface: #2a2927; --surface-2: #33312e; --border: rgba(250, 249, 245, 0.12);
+  --text: #f5f4ef; --text-2: #c3c0b6; --text-3: #8f8d86; --accent: #d97757;
+  --green: #5cbf86; --yellow: #e2b93b; --orange: #ec8a45; --red: #ef6a5f; --critical: #ff4f6d;
+  --track: rgba(250, 249, 245, 0.1); --shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font); color: var(--text); font-size: 13px; -webkit-font-smoothing: antialiased; }
+.num { font-variant-numeric: tabular-nums; }
+.lvl-green { --lvl: var(--green); } .lvl-yellow { --lvl: var(--yellow); } .lvl-orange { --lvl: var(--orange); }
+.lvl-red { --lvl: var(--red); } .lvl-critical { --lvl: var(--critical); } .lvl-unknown { --lvl: var(--unknown); }
+.progress { position: relative; height: 6px; border-radius: 99px; background: var(--track); overflow: hidden; }
+.progress .fill { height: 100%; border-radius: 99px; background: var(--lvl); transition: width 600ms cubic-bezier(.2,.8,.2,1), background-color 300ms; }
+.progress .overflow { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, transparent 0 4px, rgba(255,255,255,.35) 4px 7px); }
+[data-reduced-motion] *, [data-reduced-motion] *::before { transition: none !important; animation: none !important; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+.badge { display: inline-block; font-size: 10px; line-height: 15px; padding: 0 6px; border-radius: 99px; font-weight: 600; letter-spacing: .02em; vertical-align: middle; border: 1px solid transparent; }
+.b-officiel { color: var(--green); border-color: color-mix(in srgb, var(--green) 40%, transparent); }
+.b-observe { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.b-estime { color: var(--yellow); border-color: color-mix(in srgb, var(--yellow) 45%, transparent); font-style: italic; }
+.b-indispo { color: var(--text-3); border-color: var(--border); }
+.b-manuel { color: var(--text-2); border-color: var(--border); }
+button { font: inherit; color: inherit; }
+.btn { border: 1px solid var(--border); background: var(--surface); border-radius: 8px; padding: 5px 10px; cursor: pointer; }
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--accent); color: #fff; border-color: transparent; }
+.btn:focus-visible, .icon-btn:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.muted { color: var(--text-2); } .faint { color: var(--text-3); }
